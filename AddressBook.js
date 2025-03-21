@@ -70,3 +70,6 @@ function contactDetails(firstName,lastName,address,state,city,zipCode,email,phon
         }
     }   
 }
+//UC3 
+contactDetails('Baibhavi', 'Pandey', 'Home', 'Jharkhand', 'Dhanbad', "828127", 'baibhavipandey@gmail.com', "8646701035");
+console.log(addressBook);
