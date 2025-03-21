@@ -1,4 +1,4 @@
-//UC-1
+// UC-1
 class Contact{
     firstName;
     lastName;
@@ -9,9 +9,9 @@ class Contact{
     email;
     phoneNumber;
 
-    //constructor
-    constructor(firstName, lastName, address, state, city, zipCode, email, phoneNumber) {
-        this.firstName = firstName;
+   //created constructor
+    constructor(firstName,lastName,address,state,city,zipCode,email,phoneNumber){
+        this.firstName = firstName
         this.lastName = lastName
         this.address = address
         this.state = state
@@ -51,7 +51,7 @@ function contactDetails(firstName,lastName,address,state,city,zipCode,email,phon
     const zipCodePattern = /^[0-9]{6}/;
     let zipCode_Check = zipCodePattern.test(zipCode) ;
 
-    const emailPattern = /^[A-Za-z0-9]+(.[A-Za-z0-9]+)@[^\\W]+(.[^\\W]+)?(?=(.[^_\\W]{3,}$|.[a-zA-Z]{2}$)).$/;
+    const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
     let email_Check = emailPattern.test(email);
 
     const phoneNumberPattern = /^[0-9]{10}/;
@@ -70,9 +70,11 @@ function contactDetails(firstName,lastName,address,state,city,zipCode,email,phon
         }
     }   
 }
+
 //UC3 
-contactDetails('Baibhavi', 'Pandey', 'Home', 'Jharkhand', 'Dhanbad', "828127", 'baibhavipandey@gmail.com', "8646701035");
+contactDetails('Divya', 'Singh', 'Home', 'Uttar Pradesh', 'Varanasi', "211007", 'Divya@gmail.com', "9842532525");
 console.log(addressBook);
+
 //UC4
 
 //method to find and editContacts
@@ -135,6 +137,7 @@ function numberOfContacts(){
 }
 
 console.log("Total number of contacts inside address book is : "+numberOfContacts());
+
 // UC7
 
 //method for Duplicate Check Function
@@ -145,6 +148,7 @@ function isDuplicate(firstName) {
     let duplicateCount = duplicates.reduce((count) => count + 1, 0);
     return duplicateCount > 0;
 }
+
 //UC 8
 
  // method to Search Contact 
@@ -204,6 +208,38 @@ function sortContact(choice){
         if(newContact1.firstName < newContact2.firstName){
             return -1;
         }else if(newContact1.firstName == newContact2.firstName){
+            return 0;
+        }else{
+            return 1;
+        }
+    }));
+}
+
+//UC 12
+
+//sorting 
+function sortContact(choice){
+    console.log(addressBook.sort((newContact1,newContact2) => {
+        switch(choice){
+            case "city":
+                one = newContact1.city;
+                two = newContact2.city;
+                break;
+            case  "state":
+                one = newContact1.state;
+                two = newContact2.state;
+                break;
+            case "zipCode":
+                one = newContact1.zipCode;
+                two = newContact2.zipCode;
+                break;
+            default:
+                console.log("Provide Valid Input city or state or zipCode")
+        }
+   
+        if(one < two){
+            return -1;
+        }else if(one == two){
             return 0;
         }else{
             return 1;
